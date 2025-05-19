@@ -1,0 +1,50 @@
+@tailwind utilities;
+
+html, body, #root {
+  background-color: #84dd13;
+  color: black;
+  font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3vh;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: xx-large;
+}
+
+p {
+  margin: 0;
+}
+
+* {
+  user-select: none;
+}
+
+.playback-reader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.playback-display {
+  width: clamp(160px, 70%, 560px);
+  opacity: 0.5;
+  border: 2px solid white;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: white;
+  aspect-ratio: 16/9;
+}
