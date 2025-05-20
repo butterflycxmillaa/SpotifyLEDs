@@ -11,19 +11,20 @@ router.get('/playback', async (req, res) => {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    if(response.status == 204) {
+    if(response.status === 204) {
         return res.status(200).json({
             success: true,
             code: 204,
             data: {
                 progress_ms: 0,
-                duration_ms: 0,
+                isPlaying: false,
                 timestamp: globalTimestamp,
+                device: null,
                 item: null
             }
         })
     }
-    else if(response.status != 200) {
+    else if(response.status !== 200) {
         return res.status(response.status).json({
             success: false,
             code: response.status,
@@ -33,20 +34,21 @@ router.get('/playback', async (req, res) => {
     else {
         let data = await response.json();
         let parseType = data.currently_playing_type;
-        if(parseType == 'ad' || parseType == 'unknown') {
+        if(parseType !== 'track') {
             res.status(200).json({
                 success: true,
                 code: 204,
                 data: {
                     progress_ms: 0,
-                    duration_ms: 0,
+                    isPlaying: false,
                     timestamp: globalTimestamp,
+                    device: null,
                     item: null
                 }
             })
         }
         else {
-            let item = parseType == 'track' ? parseTrack(data.item) : parseEpisode(data.item)
+            let item = parseTrack(data.item)
             let timestamp = new Date()
             let latency = timestamp - globalTimestamp
             res.status(200).json({
@@ -56,6 +58,12 @@ router.get('/playback', async (req, res) => {
                     progress_ms: data.progress_ms,
                     timestamp: globalTimestamp,
                     latency: latency,
+                    device: {
+                        name: data.device.name,
+                        type: data.device.type,
+                        volume: data.device.volume_percent
+                    },
+                    isPlaying: data.is_playing,
                     item: item
                 }
             })
