@@ -8,7 +8,9 @@ function PlaybackDisplay({ bgColor, data }) {
         backgroundColor: bgColor,
     }} className={"playback-display"}>
         <div className={"track-details"}>
-            <img src={data.item.album_images[1].url} crossOrigin="on"/>
+            <div className={"img-container"}>
+                <img src={data.item.album_images[1].url} crossOrigin="on"/>
+            </div>
             <div className={"track-info"}>
                 <b>{data.item.track_name}</b>
                 <p>{data.item.album_name}</p>
