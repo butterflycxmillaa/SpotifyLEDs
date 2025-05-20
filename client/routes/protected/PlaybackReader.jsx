@@ -63,7 +63,7 @@ function PlaybackReader() {
         else {
             let updateInt = setInterval(() => {
                 fetchPlayback()
-            }, 2000)
+            }, 1000)
             setUpdate(updateInt)
         }
     }, [loading]);
@@ -74,6 +74,7 @@ function PlaybackReader() {
         }
         else {
             let timeoutInt = setTimeout(() => {
+                setLoading(true)
                 fetchPlayback()
             }, playback.item.duration_ms - progress - playback.item.latency)
             setRefetch(timeoutInt)

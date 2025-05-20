@@ -18,7 +18,6 @@ export const pickAverageColor = async (imageElem, ratio) => {
     try {
         data = ctx.getImageData(0, 0, w, h);
         length = data.data.length;
-        console.log(length)
         while ((i += ratio * 4) < (length)) {
             ++count;
             r += data.data[i];
@@ -28,7 +27,6 @@ export const pickAverageColor = async (imageElem, ratio) => {
         r = (r / count);
         g = (g / count);
         b = (b / count);
-        console.log(r,g,b,count)
     }
     catch (e) {
         console.log(e)

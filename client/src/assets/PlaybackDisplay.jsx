@@ -4,23 +4,8 @@ import ProgressBar from "./ProgressBar.jsx";
 import { msToMinutes } from "../utils/TimeHandler.js";
 import PlayButton from "../../public/svg/PlayButton.jsx";
 import PauseButton from "../../public/svg/PauseButton.jsx";
-import {getColor} from "../utils/ColorPicker.js";
 
-function PlaybackDisplay({ bgColor, data, progress, setProgress }) {
-    const [update, setUpdate] = useState(0);
-
-    useEffect(() => {
-        if(!data.isPlaying) {
-            clearInterval(update)
-        }
-        else {
-            let updateInt = setInterval(() => {
-                setProgress(prev => prev + 1000)
-            }, 1000)
-            setUpdate(updateInt)
-        }
-    }, [data.isPlaying])
-
+function PlaybackDisplay({ bgColor, data }) {
     return <div style={{
         backgroundColor: bgColor
     }} className={"playback-display"}>
@@ -43,7 +28,7 @@ function PlaybackDisplay({ bgColor, data, progress, setProgress }) {
             </div>
         </div>
         <div className={"track-progress"}>
-            <p>{msToMinutes(progress)}</p>
+            <p>{msToMinutes(data.progress_ms)}</p>
             <ProgressBar part={data.progress_ms} total={data.item.duration_ms} />
             <p>{msToMinutes(data.item.duration_ms)}</p>
         </div>
