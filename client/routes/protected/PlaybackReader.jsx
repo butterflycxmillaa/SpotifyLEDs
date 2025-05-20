@@ -79,6 +79,10 @@ function PlaybackReader() {
             clearInterval(update)
         }
         else {
+            let intervalInt = setInterval(() => {
+                fetchPlayback()
+            })
+            setUpdate(intervalInt)
             let timeoutInt = setTimeout(() => {
                 setLoading(true)
                 fetchPlayback()
@@ -88,7 +92,6 @@ function PlaybackReader() {
     }, [playing, trackId])
 
     useEffect(() => {
-        console.log(color)
         if(isLight(color.R, color.G, color.B)) {
             setTheme("light")
         }

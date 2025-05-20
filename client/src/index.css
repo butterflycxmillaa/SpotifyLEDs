@@ -121,12 +121,12 @@
   }
 
   .track-details img {
-    height: clamp(75px, 100%, 100px);
+    height: clamp(75px, 100%, 120px);
     overflow: hidden;
   }
 
   .track-info {
-    width: clamp(100px, 80%, calc(100% - 100px));
+    width: clamp(100px, 80%, calc(100% - 120px));
     padding: 10px 5px;
     box-sizing: content-box;
   }

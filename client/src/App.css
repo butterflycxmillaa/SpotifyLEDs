@@ -38,6 +38,7 @@ p {
 }
 
 * {
+    -webkit-user-drag: none;
     user-select: none;
     font-size: max(2.4vh, 20px);
     color: var(--text-color);

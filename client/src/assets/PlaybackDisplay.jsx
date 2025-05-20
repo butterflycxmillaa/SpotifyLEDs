@@ -5,7 +5,7 @@ import PauseButton from "../../public/svg/PauseButton.jsx";
 
 function PlaybackDisplay({ bgColor, data }) {
     return <div style={{
-        backgroundColor: bgColor
+        backgroundColor: bgColor,
     }} className={"playback-display"}>
         <div className={"track-details"}>
             <img src={data.item.album_images[1].url} crossOrigin="on"/>
