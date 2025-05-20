@@ -1,5 +1,3 @@
-import {useEffect, useState} from "react";
-
 import ProgressBar from "./ProgressBar.jsx";
 import { msToMinutes } from "../utils/TimeHandler.js";
 import PlayButton from "../../public/svg/PlayButton.jsx";

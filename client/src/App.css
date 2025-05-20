@@ -3,23 +3,19 @@
 :root {
     --text-color: white;
     --gradient-color: black;
-    --bar-color: gray;
 }
 
 .theme-dark {
     --text-color: white;
     --gradient-color: black;
-    --bar-color: gray;
 }
 
 .theme-light {
     --text-color: black;
     --gradient-color: white;
-    --bar-color: gray;
 }
 
 html, body, #root {
-    color: black;
     font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
     font-size: 3vh;
     margin: 0;
@@ -42,5 +38,5 @@ p {
 * {
     user-select: none;
     font-size: max(2.4vh, 20px);
-    color: white;
+    color: var(--text-color);
 }

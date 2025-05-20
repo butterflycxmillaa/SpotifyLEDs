@@ -1,4 +1,4 @@
-import {getColor, pickAverageColor} from "../../src/utils/ColorPicker.js";
+import {getColor, isLight, pickAverageColor} from "../../src/utils/ColorPicker.js";
 import { useEffect, useState, useLayoutEffect } from "react";
 import PlaybackDisplay from "../../src/assets/PlaybackDisplay.jsx";
 
@@ -16,6 +16,7 @@ function PlaybackReader() {
         G: 0,
         B: 0
     })
+    const [theme, setTheme] = useState("dark")
 
     const fetchPlayback = async () => {
         let response = await fetch("http://localhost:3000/api/playback", {
@@ -31,6 +32,9 @@ function PlaybackReader() {
         else if(data.code === 204) {
             setLoading(false)
             setTrackId(null)
+            setImage(null)
+            setPlaying(false)
+            setTheme("dark")
         }
         else if(data.code !== 200) {
             window.location.href = `http://localhost:5173/error?error=${
@@ -69,8 +73,10 @@ function PlaybackReader() {
     }, [loading]);
 
     useEffect(() => {
+        console.log("playing", playing)
         if(!playing) {
             clearTimeout(refetch)
+            clearInterval(update)
         }
         else {
             let timeoutInt = setTimeout(() => {
@@ -81,7 +87,17 @@ function PlaybackReader() {
         }
     }, [playing, trackId])
 
-    return <div className={"playback-reader"} style={{
+    useEffect(() => {
+        console.log(color)
+        if(isLight(color.R, color.G, color.B)) {
+            setTheme("light")
+        }
+        else {
+            setTheme("dark")
+        }
+    }, [color]);
+
+    return <div className={`playback-reader theme-${theme}`} style={{
         backgroundImage: `url(${image})`,
         backgroundColor: `rgb(${color.R},${color.G},${color.B})`
     }}>
