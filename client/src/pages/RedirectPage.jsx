@@ -15,7 +15,9 @@ function RedirectPage() {
         }
     }, [])
 
-    return <p>redirecting...</p>
+    return <div className={"theme-dark"}>
+        <p>redirecting...</p>
+    </div>
 }
 
 export default RedirectPage;

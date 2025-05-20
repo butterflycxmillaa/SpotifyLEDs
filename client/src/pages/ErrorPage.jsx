@@ -8,10 +8,10 @@ function ErrorPage() {
         setMessage(params.get('error'));
     }, [])
 
-    return (<>
+    return (<div className={"theme-dark"}>
         <h1>An error occurred</h1>
         <p><b>Info:</b> {message}</p>
-    </>)
+    </div>)
 }
 
 export default ErrorPage

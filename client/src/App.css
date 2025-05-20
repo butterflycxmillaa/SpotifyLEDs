@@ -7,15 +7,17 @@
 
 .theme-dark {
     --text-color: white;
-    --gradient-color: black;
+    --gradient-color: #2a2a2a;
 }
 
 .theme-light {
-    --text-color: black;
+    --text-color: #2a2a2a;
     --gradient-color: white;
 }
 
 html, body, #root {
+    background-color: var(--gradient-color);
+    text-align: center;
     font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
     font-size: 3vh;
     margin: 0;
