@@ -1,5 +1,5 @@
-import {getColor, isLight, pickAverageColor} from "../../src/utils/ColorPicker.js";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { getColor, isLight, pickAverageColor } from "../../src/utils/ColorPicker.js";
+import { useEffect, useState } from "react";
 import PlaybackDisplay from "../../src/assets/PlaybackDisplay.jsx";
 
 function PlaybackReader() {
@@ -33,8 +33,7 @@ function PlaybackReader() {
             setLoading(false)
             setTrackId(null)
             setImage(null)
-            setPlaying(false)
-            setTheme("dark")
+            setPlayback(data.data)
         }
         else if(data.code !== 200) {
             window.location.href = `http://localhost:5173/error?error=${
